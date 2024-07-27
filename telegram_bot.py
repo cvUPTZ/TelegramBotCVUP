@@ -18,7 +18,7 @@ SMTP_PORT = int(os.getenv('SMTP_PORT'))
 
 # CV file paths
 CV_FILES = {
-    'junior': 'cv_models/Junior_cv_model.docx',
+    'junior': 'cv_models/Juior_cv_model.docx',
     'senior': 'cv_models/Senior_cv_model.docx'
 }
 

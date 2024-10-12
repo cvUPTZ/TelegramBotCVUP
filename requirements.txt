@@ -1,2 +1,510 @@
-python-telegram-bot==20.0
-requests==2.28.1
+*** Settings ***
+Documentation  linkedin web application page object.
+
+*** Variables ***
+${linkedin._2_nouvelles_notifications_notifications_2}                css=a[href='https://www.linkedin.com/notifications/?']
+${linkedin.accder_la_recherche}                                       id=ember29
+${linkedin.afficher_les_4_comptences}                                 id=navigation-index-Afficher-les-4-comp-tences
+${linkedin.afficher_tous_les_groupes}                                 id=navigation-index-see-all-groups
+${linkedin.afficher_tous_les_posts}                                   css=a.app-aware-link.profile-creator-shared-content-view__footer-action.artdeco-button.artdeco-button--muted.artdeco-button--icon-right.artdeco-button--3.artdeco-button--fluid.artdeco-button--tertiary
+${linkedin.afficher_toutes_les_entreprises}                           id=navigation-index-see-all-companies
+${linkedin.afficher_toutes_les_top_voices}                            id=navigation-index-see-all-influencers
+${linkedin.ask_richardask_richard_a_place}                            css=#ember110 div.APcucnoMpHKtLfsmBTBHOnchGViDildPc ul.gTHfrqEnfeOVEzKROdubmOZByDzJwJCxRPfgeik.ph5.display-flex.flex-row.flex-wrap. li:nth-of-type(2) div.aPopSinRCwgqUeNOkFjDhByvdPQkrsxXmU.TMRdoKagEzokIpUFAiiSWiqzwpsyxpsgmKvPg.zNkEngysjGWjKodYYKiQkGTLcUqDBOqVErbGM. div:nth-of-type(2) div:nth-of-type(1) a.optional-action-target-wrapper.display-flex.flex-column.full-width
+${linkedin.baroness_dambisa_moyobaroness_dambisa_moyo}                css=#ember95 div.APcucnoMpHKtLfsmBTBHOnchGViDildPc ul.gTHfrqEnfeOVEzKROdubmOZByDzJwJCxRPfgeik.ph5.display-flex.flex-row.flex-wrap. li:nth-of-type(1) div.aPopSinRCwgqUeNOkFjDhByvdPQkrsxXmU.TMRdoKagEzokIpUFAiiSWiqzwpsyxpsgmKvPg.zNkEngysjGWjKodYYKiQkGTLcUqDBOqVErbGM. div:nth-of-type(2) div:nth-of-type(1) a.optional-action-target-wrapper.display-flex.flex-column.full-width
+${linkedin.bulk_commodity_buyers_specialty_chemicals}                 css=#ember105 div.APcucnoMpHKtLfsmBTBHOnchGViDildPc ul.gTHfrqEnfeOVEzKROdubmOZByDzJwJCxRPfgeik.ph5.display-flex.flex-row.flex-wrap. li:nth-of-type(1) div.aPopSinRCwgqUeNOkFjDhByvdPQkrsxXmU.TMRdoKagEzokIpUFAiiSWiqzwpsyxpsgmKvPg.zNkEngysjGWjKodYYKiQkGTLcUqDBOqVErbGM. div:nth-of-type(2) div:nth-of-type(1) a.optional-action-target-wrapper.display-flex.flex-column.full-width
+${linkedin.buyersworld_europe_north_america}                          css=#ember105 div.APcucnoMpHKtLfsmBTBHOnchGViDildPc ul.gTHfrqEnfeOVEzKROdubmOZByDzJwJCxRPfgeik.ph5.display-flex.flex-row.flex-wrap. li:nth-of-type(2) div.aPopSinRCwgqUeNOkFjDhByvdPQkrsxXmU.TMRdoKagEzokIpUFAiiSWiqzwpsyxpsgmKvPg.zNkEngysjGWjKodYYKiQkGTLcUqDBOqVErbGM. div:nth-of-type(2) div:nth-of-type(1) a.optional-action-target-wrapper.display-flex.flex-column.full-width
+${linkedin.cargill_cargill_2_834_582}                                 css=#ember100 div.APcucnoMpHKtLfsmBTBHOnchGViDildPc ul.gTHfrqEnfeOVEzKROdubmOZByDzJwJCxRPfgeik.ph5.display-flex.flex-row.flex-wrap. li:nth-of-type(2) div.aPopSinRCwgqUeNOkFjDhByvdPQkrsxXmU.TMRdoKagEzokIpUFAiiSWiqzwpsyxpsgmKvPg.zNkEngysjGWjKodYYKiQkGTLcUqDBOqVErbGM. div:nth-of-type(2) div:nth-of-type(1) a.optional-action-target-wrapper.display-flex.flex-column.full-width
+${linkedin.chama__mchama__m_responsable_commerciale}                  css=a[href='https://www.linkedin.com/in/cha%C3%AFma-m-bb2913313?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAE-xB_YB2MIHjzlgXnCgtcv-3Y1vViArOdM']
+${linkedin.colescoles}                                                id=ember94
+${linkedin.commentaires}                                              id=content-collection-pill-1
+${linkedin.coordonnes}                                                id=top-card-text-details-contact-info
+${linkedin.corneille_towendocorneille_towendo}                        css=a[href='https://www.linkedin.com/in/corneille']
+${linkedin.data_drive_mono}                                           css=a.app-aware-link.msg-premium-mailboxes__link.display-flex.align-items-center.pv2.ph3
+${linkedin.djoudi_slimanedjoudi_slimane_2erelation}                   css=#profile-content div.body div:nth-of-type(2) div.scaffold-layout__inner.scaffold-layout-container.scaffold-layout-container--reflow. div.scaffold-layout__row.scaffold-layout__content.scaffold-layout__content--main-aside.scaffold-layout__content--has-aside. aside.scaffold-layout__aside. section:nth-of-type(2) div:nth-of-type(3) ul.gTHfrqEnfeOVEzKROdubmOZByDzJwJCxRPfgeik. li:nth-of-type(2) div.aPopSinRCwgqUeNOkFjDhByvdPQkrsxXmU.TMRdoKagEzokIpUFAiiSWiqzwpsyxpsgmKvPg.zNkEngysjGWjKodYYKiQkGTLcUqDBOqVErbGM. div:nth-of-type(2) div:nth-of-type(1) a.optional-action-target-wrapper.display-flex.flex-column.full-width
+${linkedin.entreprisesentreprises}                                    id=ember91
+${linkedin.fermer_le_menu_de_navigation_1}                            id=ember33
+${linkedin.fermer_le_menu_de_navigation_2}                            css=input.search-global-typeahead__input
+${linkedin.groupesgroupes}                                            id=ember92
+${linkedin.halim_fraouihalim_fraoui_general_manager}                  css=a[href='https://www.linkedin.com/in/halim-fraoui-21b80a143?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAACLTVLcBItxK8vQ5aEPxo6FR_hm26p9vEiE']
+${linkedin.hassane_chellaf}                                           id=ember17
+${linkedin.houria_kerkarinehouria_kerkarine_business_develop}         css=a[href='https://www.linkedin.com/in/houria-kerkarine-973082138?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAACF4WucBamzzHqW1S-GptUL2EhZlXIGV9mE']
+${linkedin.humboldtuniversitt_zu_berlinhumboldtuniversitt_zu_berlin}  css=a[href='https://www.linkedin.com/school/15463/']
+${linkedin.ilyas_chenoufilyas_chenouf_2erelation}                     css=#profile-content div.body div:nth-of-type(2) div.scaffold-layout__inner.scaffold-layout-container.scaffold-layout-container--reflow. div.scaffold-layout__row.scaffold-layout__content.scaffold-layout__content--main-aside.scaffold-layout__content--has-aside. aside.scaffold-layout__aside. section:nth-of-type(3) div:nth-of-type(3) ul.gTHfrqEnfeOVEzKROdubmOZByDzJwJCxRPfgeik. li:nth-of-type(2) div.aPopSinRCwgqUeNOkFjDhByvdPQkrsxXmU.TMRdoKagEzokIpUFAiiSWiqzwpsyxpsgmKvPg.zNkEngysjGWjKodYYKiQkGTLcUqDBOqVErbGM. div:nth-of-type(2) div:nth-of-type(1) a.optional-action-target-wrapper.display-flex.flex-column.full-width
+${linkedin.imed_eddine_belbachirimed_eddine_belbachir}                css=#profile-content div.body div:nth-of-type(2) div.scaffold-layout__inner.scaffold-layout-container.scaffold-layout-container--reflow. div.scaffold-layout__row.scaffold-layout__content.scaffold-layout__content--main-aside.scaffold-layout__content--has-aside. aside.scaffold-layout__aside. section:nth-of-type(2) div:nth-of-type(3) ul.gTHfrqEnfeOVEzKROdubmOZByDzJwJCxRPfgeik. li:nth-of-type(4) div.aPopSinRCwgqUeNOkFjDhByvdPQkrsxXmU.TMRdoKagEzokIpUFAiiSWiqzwpsyxpsgmKvPg.zNkEngysjGWjKodYYKiQkGTLcUqDBOqVErbGM. div:nth-of-type(2) div:nth-of-type(1) a.optional-action-target-wrapper.display-flex.flex-column.full-width
+${linkedin.karima_arabkarima_arab_sales_account}                      css=a[href='https://www.linkedin.com/in/karima-arab-5a1978131?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAACBbbEkBcPEDd8soYFJzYXxl86gtudAGoiE']
+${linkedin.leaders_en_actionleaders_en_action}                        css=#ember110 div.APcucnoMpHKtLfsmBTBHOnchGViDildPc ul.gTHfrqEnfeOVEzKROdubmOZByDzJwJCxRPfgeik.ph5.display-flex.flex-row.flex-wrap. li:nth-of-type(1) div.aPopSinRCwgqUeNOkFjDhByvdPQkrsxXmU.TMRdoKagEzokIpUFAiiSWiqzwpsyxpsgmKvPg.zNkEngysjGWjKodYYKiQkGTLcUqDBOqVErbGM. div:nth-of-type(2) div:nth-of-type(1) a.optional-action-target-wrapper.display-flex.flex-column.full-width
+${linkedin.linkedin_learning}                                         css=a[href='https://www.linkedin.com/learning/?trk=nav_neptune_learning&']
+${linkedin.marketing_internationalmarketing_international}            css=a[href='https://www.linkedin.com/search/results/all/?keywords=Marketing+international&origin=PROFILE_PAGE_SKILL_NAVIGATION']
+${linkedin.mars_mars_1_549_207}                                       css=#ember100 div.APcucnoMpHKtLfsmBTBHOnchGViDildPc ul.gTHfrqEnfeOVEzKROdubmOZByDzJwJCxRPfgeik.ph5.display-flex.flex-row.flex-wrap. li:nth-of-type(1) div.aPopSinRCwgqUeNOkFjDhByvdPQkrsxXmU.TMRdoKagEzokIpUFAiiSWiqzwpsyxpsgmKvPg.zNkEngysjGWjKodYYKiQkGTLcUqDBOqVErbGM. div:nth-of-type(2) div:nth-of-type(1) a.optional-action-target-wrapper.display-flex.flex-column.full-width
+${linkedin.message_1}                                                 id=ember155
+${linkedin.message_2}                                                 id=ember156
+${linkedin.messagerie}                                                css=a[href='https://www.linkedin.com/messaging/?']
+${linkedin.messagerie_vous_tes_dans_la}                               css=button.msg-overlay-bubble-header__button.truncate.ml2
+${linkedin.moha_benahmedmoha_benahmed_2erelation}                     css=#profile-content div.body div:nth-of-type(2) div.scaffold-layout__inner.scaffold-layout-container.scaffold-layout-container--reflow. div.scaffold-layout__row.scaffold-layout__content.scaffold-layout__content--main-aside.scaffold-layout__content--has-aside. aside.scaffold-layout__aside. section:nth-of-type(2) div:nth-of-type(3) ul.gTHfrqEnfeOVEzKROdubmOZByDzJwJCxRPfgeik. li:nth-of-type(5) div.aPopSinRCwgqUeNOkFjDhByvdPQkrsxXmU.TMRdoKagEzokIpUFAiiSWiqzwpsyxpsgmKvPg.zNkEngysjGWjKodYYKiQkGTLcUqDBOqVErbGM. div:nth-of-type(2) div:nth-of-type(1) a.optional-action-target-wrapper.display-flex.flex-column.full-width
+${linkedin.mohamed_amine_douirimohamed_amine_douiri}                  css=a[href='https://www.linkedin.com/in/mohamed-amine-douiri-1b310310?miniProfileUrn=urn%3Ali%3Afs_miniProfile%3AACoAAAImoVcByyjFBVG_RKZG3LydESYG37EewuQ']
+${linkedin.neila_laghaneila_lagha_2erelation}                         css=#profile-content div.body div:nth-of-type(2) div.scaffold-layout__inner.scaffold-layout-container.scaffold-layout-container--reflow. div.scaffold-layout__row.scaffold-layout__content.scaffold-layout__content--main-aside.scaffold-layout__content--has-aside. aside.scaffold-layout__aside. section:nth-of-type(3) div:nth-of-type(3) ul.gTHfrqEnfeOVEzKROdubmOZByDzJwJCxRPfgeik. li:nth-of-type(1) div.aPopSinRCwgqUeNOkFjDhByvdPQkrsxXmU.TMRdoKagEzokIpUFAiiSWiqzwpsyxpsgmKvPg.zNkEngysjGWjKodYYKiQkGTLcUqDBOqVErbGM. div:nth-of-type(2) div:nth-of-type(1) a.optional-action-target-wrapper.display-flex.flex-column.full-width
+${linkedin.newslettersnewsletters}                                    id=ember93
+${linkedin.nouvelles_du_fil_dactualit_nouvelles}                      css=a[href='https://www.linkedin.com/feed/?nis=true&']
+${linkedin.offres_demploi}                                            css=a[href='https://www.linkedin.com/jobs/?']
+${linkedin.ouafa_saighiouafa_saighi_2erelation}                       css=#profile-content div.body div:nth-of-type(2) div.scaffold-layout__inner.scaffold-layout-container.scaffold-layout-container--reflow. div.scaffold-layout__row.scaffold-layout__content.scaffold-layout__content--main-aside.scaffold-layout__content--has-aside. aside.scaffold-layout__aside. section:nth-of-type(2) div:nth-of-type(3) ul.gTHfrqEnfeOVEzKROdubmOZByDzJwJCxRPfgeik. li:nth-of-type(1) div.aPopSinRCwgqUeNOkFjDhByvdPQkrsxXmU.TMRdoKagEzokIpUFAiiSWiqzwpsyxpsgmKvPg.zNkEngysjGWjKodYYKiQkGTLcUqDBOqVErbGM. div:nth-of-type(2) div:nth-of-type(1) a.optional-action-target-wrapper.display-flex.flex-column.full-width
+${linkedin.page_loaded_text}                                          Member, House of Lords - sitting as Baroness Moyo of Knightsbridge; Investor, Board member, Author
+${linkedin.page_url}                                                  /in/hassane-chellaf-ba1161b1/
+${linkedin.passer_au_contenu_principal}                               id=ember30
+${linkedin.photo_du_profil_de_chama}                                  css=a[href='https://www.linkedin.com/in/cha%C3%AFma-m-bb2913313']
+${linkedin.photo_du_profil_de_houria}                                 css=a[href='https://www.linkedin.com/in/houria-kerkarine-973082138']
+${linkedin.photo_du_profil_de_mohamed}                                css=a[href='https://www.linkedin.com/in/mohamed-amine-douiri-1b310310']
+${linkedin.planification_de_marchplanification_de_march}              css=a[href='https://www.linkedin.com/search/results/all/?keywords=Planification+de+march%C3%A9&origin=PROFILE_PAGE_SKILL_NAVIGATION']
+${linkedin.plus_1}                                                    id=ember55-profile-overflow-action
+${linkedin.plus_2}                                                    id=ember71-profile-overflow-action
+${linkedin.posts}                                                     id=content-collection-pill-0
+${linkedin.pour_les_entreprises}                                      id=ember43
+${linkedin.raccourcis_clavier}                                        id=ember32
+${linkedin.rdiger_un_message}                                         id=ember164
+${linkedin.recherche}                                                 css=button.search-global-typeahead__collapsed-search-button
+${linkedin.redouane_zazoua_fellahredouane_zazoua_fellah}              css=#profile-content div.body div:nth-of-type(2) div.scaffold-layout__inner.scaffold-layout-container.scaffold-layout-container--reflow. div.scaffold-layout__row.scaffold-layout__content.scaffold-layout__content--main-aside.scaffold-layout__content--has-aside. aside.scaffold-layout__aside. section:nth-of-type(2) div:nth-of-type(3) ul.gTHfrqEnfeOVEzKROdubmOZByDzJwJCxRPfgeik. li:nth-of-type(3) div.aPopSinRCwgqUeNOkFjDhByvdPQkrsxXmU.TMRdoKagEzokIpUFAiiSWiqzwpsyxpsgmKvPg.zNkEngysjGWjKodYYKiQkGTLcUqDBOqVErbGM. div:nth-of-type(2) div:nth-of-type(1) a.optional-action-target-wrapper.display-flex.flex-column.full-width
+${linkedin.rejoindre_1}                                               id=ember107
+${linkedin.rejoindre_2}                                               id=ember109
+${linkedin.richard_bransonrichard_branson}                            css=#ember110 div.APcucnoMpHKtLfsmBTBHOnchGViDildPc ul.gTHfrqEnfeOVEzKROdubmOZByDzJwJCxRPfgeik.ph5.display-flex.flex-row.flex-wrap. li:nth-of-type(2) div.aPopSinRCwgqUeNOkFjDhByvdPQkrsxXmU.TMRdoKagEzokIpUFAiiSWiqzwpsyxpsgmKvPg.zNkEngysjGWjKodYYKiQkGTLcUqDBOqVErbGM. div:nth-of-type(2) div:nth-of-type(2) ul.gTHfrqEnfeOVEzKROdubmOZByDzJwJCxRPfgeik. li:nth-of-type(1) div..mv1.display-flex.align-items-center a.optional-action-target-wrapper.display-flex.link-without-hover-visited
+${linkedin.richard_bransonrichard_branson_founder_at}                 css=#ember95 div.APcucnoMpHKtLfsmBTBHOnchGViDildPc ul.gTHfrqEnfeOVEzKROdubmOZByDzJwJCxRPfgeik.ph5.display-flex.flex-row.flex-wrap. li:nth-of-type(2) div.aPopSinRCwgqUeNOkFjDhByvdPQkrsxXmU.TMRdoKagEzokIpUFAiiSWiqzwpsyxpsgmKvPg.zNkEngysjGWjKodYYKiQkGTLcUqDBOqVErbGM. div:nth-of-type(2) div:nth-of-type(1) a.optional-action-target-wrapper.display-flex.flex-column.full-width
+${linkedin.rseau}                                                     css=a[href='https://www.linkedin.com/mynetwork/?']
+${linkedin.sabonner_1}                                                id=ember113
+${linkedin.sabonner_2}                                                id=ember116
+${linkedin.sahouli_abdelkader}                                        css=a.app-aware-link.inline-flex.align-items-center.link-without-hover-visited.pt2
+${linkedin.se_connecter_1}                                            id=ember80
+${linkedin.se_connecter_10}                                           id=ember141
+${linkedin.se_connecter_11}                                           id=ember142
+${linkedin.se_connecter_2}                                            id=ember123
+${linkedin.se_connecter_3}                                            id=ember127
+${linkedin.se_connecter_4}                                            id=ember129
+${linkedin.se_connecter_5}                                            id=ember133
+${linkedin.se_connecter_6}                                            id=ember135
+${linkedin.se_connecter_7}                                            id=ember137
+${linkedin.se_connecter_8}                                            id=ember138
+${linkedin.se_connecter_9}                                            id=ember139
+${linkedin.suivre_1}                                                  id=ember65
+${linkedin.suivre_10}                                                 id=ember125
+${linkedin.suivre_11}                                                 id=ember131
+${linkedin.suivre_2}                                                  id=ember69
+${linkedin.suivre_3}                                                  id=ember84
+${linkedin.suivre_4}                                                  id=ember97
+${linkedin.suivre_5}                                                  id=ember99
+${linkedin.suivre_6}                                                  id=ember102
+${linkedin.suivre_7}                                                  id=ember104
+${linkedin.suivre_8}                                                  id=ember119
+${linkedin.suivre_9}                                                  id=ember121
+${linkedin.top_voicestop_voices}                                      id=ember90
+${linkedin.tout_afficher_1}                                           id=navigation-overlay-section-see-more
+${linkedin.tout_afficher_2}                                           id=navigation-overlay-section-pymk-education-see-more
+${linkedin.universit_dalger}                                          css=button.UulNYcZTLWYbbsHfSJDpEMVakVEdGsuQI.text-align-left
+${linkedin.universit_dalgeruniversit_dalger}                          css=#profile-content div.body div:nth-of-type(2) div.scaffold-layout__inner.scaffold-layout-container.scaffold-layout-container--reflow. div.scaffold-layout__row.scaffold-layout__content.scaffold-layout__content--main-aside.scaffold-layout__content--has-aside. main.scaffold-layout__main section:nth-of-type(4) div:nth-of-type(3) ul.gTHfrqEnfeOVEzKROdubmOZByDzJwJCxRPfgeik. li.artdeco-list__item.eNTVwBjAycFfVdpjeBAhWJQXRDcqTbjbpsse.rRkUeQsRqGIrlwBYOoYkotIiHnPKcWieo div.aPopSinRCwgqUeNOkFjDhByvdPQkrsxXmU.TMRdoKagEzokIpUFAiiSWiqzwpsyxpsgmKvPg.zNkEngysjGWjKodYYKiQkGTLcUqDBOqVErbGM. div:nth-of-type(2) div:nth-of-type(1) a.optional-action-target-wrapper.display-flex.flex-column.full-width
+${linkedin.universit_dalgeruniversit_dalger_52_600}                   css=a[href='https://www.linkedin.com/school/15092628/']
+${linkedin.vous}                                                      id=ember39
+${linkedin.vous_tes_dans_la_fentre}                                   id=ember165
+
+*** Keywords ***
+Click 2 2 Nouvelles Notifications Notifications Link
+    [Documentation]  Click on 2 2 Nouvelles Notifications Notifications Link.
+    Click Link  ${linkedin._2_nouvelles_notifications_notifications_2}
+
+Click Accder La Recherche Button
+    [Documentation]  Click on Accder La Recherche Button.
+    Click Button  ${linkedin.accder_la_recherche}
+
+Click Afficher Les 4 Comptences Link
+    [Documentation]  Click on Afficher Les 4 Comptences Link.
+    Click Link  ${linkedin.afficher_les_4_comptences}
+
+Click Afficher Tous Les Groupes Link
+    [Documentation]  Click on Afficher Tous Les Groupes Link.
+    Click Link  ${linkedin.afficher_tous_les_groupes}
+
+Click Afficher Tous Les Posts Link
+    [Documentation]  Click on Afficher Tous Les Posts Link.
+    Click Link  ${linkedin.afficher_tous_les_posts}
+
+Click Afficher Toutes Les Entreprises Link
+    [Documentation]  Click on Afficher Toutes Les Entreprises Link.
+    Click Link  ${linkedin.afficher_toutes_les_entreprises}
+
+Click Afficher Toutes Les Top Voices Link
+    [Documentation]  Click on Afficher Toutes Les Top Voices Link.
+    Click Link  ${linkedin.afficher_toutes_les_top_voices}
+
+Click Ask Richardask Richard A Place Link
+    [Documentation]  Click on Ask Richardask Richard A Place Where You Can Ask Me Anything And We Can Learn From One Another.a Place Where You Can Ask Me Anything And We Can Learn From One Another. Publication Mensuellepublication Mensuelle Link.
+    Click Link  ${linkedin.ask_richardask_richard_a_place}
+
+Click Baroness Dambisa Moyobaroness Dambisa Moyo Link
+    [Documentation]  Click on Baroness Dambisa Moyobaroness Dambisa Moyo 2erelation De Deuxime Niveau Member House Of Lords Sitting As Baroness Moyo Of Knightsbridge Investor Board Member Author.member House Of Lords Sitting As Baroness Moyo Of Knightsbridge Investor Board Member Author. 1 522 997 Abonns1 522 997 Abonns Link.
+    Click Link  ${linkedin.baroness_dambisa_moyobaroness_dambisa_moyo}
+
+Click Bulk Commodity Buyers Specialty Chemicals Link
+    [Documentation]  Click on Bulk Commodity Buyers Specialty Chemicals Energy Agriculture Food Equipment Technology Etc.bulk Commodity Buyers Specialty Chemicals Energy Agriculture Food Equipment Technology Etc. 174 520 Membres174 520 Membres Link.
+    Click Link  ${linkedin.bulk_commodity_buyers_specialty_chemicals}
+
+Click Buyersworld Europe North America Link
+    [Documentation]  Click on Buyersworld Europe North America South America Middle East Africa Asia Pacific Rimbuyersworld Europe North America South America Middle East Africa Asia Pacific Rim 258 111 Membres258 111 Membres Link.
+    Click Link  ${linkedin.buyersworld_europe_north_america}
+
+Click Cargill Cargill 2 834 582 Link
+    [Documentation]  Click on Cargill Cargill 2 834 582 Abonns2 834 582 Abonns Link.
+    Click Link  ${linkedin.cargill_cargill_2_834_582}
+
+Click Chama .Mchama .M Responsable Commerciale Link
+    [Documentation]  Click on Chama .Mchama .M Responsable Commerciale Chez Prosegresponsable Commerciale Chez Proseg Link.
+    Click Link  ${linkedin.chama__mchama__m_responsable_commerciale}
+
+Click Colescoles Button
+    [Documentation]  Click on Colescoles Button.
+    Click Button  ${linkedin.colescoles}
+
+Click Commentaires Button
+    [Documentation]  Click on Commentaires Button.
+    Click Button  ${linkedin.commentaires}
+
+Click Coordonnes Link
+    [Documentation]  Click on Coordonnes Link.
+    Click Link  ${linkedin.coordonnes}
+
+Click Corneille Towendocorneille Towendo Link
+    [Documentation]  Click on Corneille Towendocorneille Towendo Link.
+    Click Link  ${linkedin.corneille_towendocorneille_towendo}
+
+Click Data Drive Mono Link
+    [Documentation]  Click on Data Drive Mono Link.
+    Click Link  ${linkedin.data_drive_mono}
+
+Click Djoudi Slimanedjoudi Slimane 2erelation Link
+    [Documentation]  Click on Djoudi Slimanedjoudi Slimane 2erelation De Deuxime Niveau Directeur Gnral .Directeur Gnral . Link.
+    Click Link  ${linkedin.djoudi_slimanedjoudi_slimane_2erelation}
+
+Click Entreprisesentreprises Button
+    [Documentation]  Click on Entreprisesentreprises Button.
+    Click Button  ${linkedin.entreprisesentreprises}
+
+Click Groupesgroupes Button
+    [Documentation]  Click on Groupesgroupes Button.
+    Click Button  ${linkedin.groupesgroupes}
+
+Click Halim Fraouihalim Fraoui General Manager Link
+    [Documentation]  Click on Halim Fraouihalim Fraoui General Manager Gomycodegeneral Manager Gomycode Link.
+    Click Link  ${linkedin.halim_fraouihalim_fraoui_general_manager}
+
+Click Hassane Chellaf Link
+    [Documentation]  Click on Hassane Chellaf Link.
+    Click Link  ${linkedin.hassane_chellaf}
+
+Click Houria Kerkarinehouria Kerkarine Business Develop Link
+    [Documentation]  Click on Houria Kerkarinehouria Kerkarine Business Develop Manager Chez Everteamgsintaliobusiness Develop Manager Chez Everteamgsintalio Link.
+    Click Link  ${linkedin.houria_kerkarinehouria_kerkarine_business_develop}
+
+Click Humboldtuniversitt Zu Berlinhumboldtuniversitt Zu Berlin Link
+    [Documentation]  Click on Humboldtuniversitt Zu Berlinhumboldtuniversitt Zu Berlin 122 682 Abonns122 682 Abonns Link.
+    Click Link  ${linkedin.humboldtuniversitt_zu_berlinhumboldtuniversitt_zu_berlin}
+
+Click Ilyas Chenoufilyas Chenouf 2erelation Link
+    [Documentation]  Click on Ilyas Chenoufilyas Chenouf 2erelation De Deuxime Niveau Managing Director At Lemsa Innovationmanaging Director At Lemsa Innovation Link.
+    Click Link  ${linkedin.ilyas_chenoufilyas_chenouf_2erelation}
+
+Click Imed Eddine Belbachirimed Eddine Belbachir Link
+    [Documentation]  Click on Imed Eddine Belbachirimed Eddine Belbachir 2erelation De Deuxime Niveau M2 Conomie Internationale Licence Conomie Et Gestion Dentreprisem2 Conomie Internationale Licence Conomie Et Gestion Dentreprise Link.
+    Click Link  ${linkedin.imed_eddine_belbachirimed_eddine_belbachir}
+
+Click Karima Arabkarima Arab Sales Account Link
+    [Documentation]  Click on Karima Arabkarima Arab Sales Account Managersales Account Manager Link.
+    Click Link  ${linkedin.karima_arabkarima_arab_sales_account}
+
+Click Leaders En Actionleaders En Action Link
+    [Documentation]  Click on Leaders En Actionleaders En Action Je Vous Aide Manifester La Vie De Vos Rves Et Attirer Beaucoup Plus De Succs Dans Votre Vie.je Vous Aide Manifester La Vie De Vos Rves Et Attirer Beaucoup Plus De Succs Dans Votre Vie. Publication Hebdomadairepublication Hebdomadaire Link.
+    Click Link  ${linkedin.leaders_en_actionleaders_en_action}
+
+Click Linkedin Learning Link
+    [Documentation]  Click on Linkedin Learning Link.
+    Click Link  ${linkedin.linkedin_learning}
+
+Click Marketing Internationalmarketing International Link
+    [Documentation]  Click on Marketing Internationalmarketing International Link.
+    Click Link  ${linkedin.marketing_internationalmarketing_international}
+
+Click Mars Mars 1 549 207 Link
+    [Documentation]  Click on Mars Mars 1 549 207 Abonns1 549 207 Abonns Link.
+    Click Link  ${linkedin.mars_mars_1_549_207}
+
+Click Message 1 Button
+    [Documentation]  Click on Message Button.
+    Click Button  ${linkedin.message_1}
+
+Click Message 2 Button
+    [Documentation]  Click on Message Button.
+    Click Button  ${linkedin.message_2}
+
+Click Messagerie Link
+    [Documentation]  Click on Messagerie Link.
+    Click Link  ${linkedin.messagerie}
+
+Click Messagerie Vous Tes Dans La Button
+    [Documentation]  Click on Messagerie Vous Tes Dans La Fentre De Messagerie. Appuyez Sur Entre Pour Ouvrir La Liste De Conversations. Button.
+    Click Button  ${linkedin.messagerie_vous_tes_dans_la}
+
+Click Moha Benahmedmoha Benahmed 2erelation Link
+    [Documentation]  Click on Moha Benahmedmoha Benahmed 2erelation De Deuxime Niveau Directeur Gnraldirecteur Gnral Link.
+    Click Link  ${linkedin.moha_benahmedmoha_benahmed_2erelation}
+
+Click Mohamed Amine Douirimohamed Amine Douiri Link
+    [Documentation]  Click on Mohamed Amine Douirimohamed Amine Douiri Sales And Business Developmentsales And Business Development Link.
+    Click Link  ${linkedin.mohamed_amine_douirimohamed_amine_douiri}
+
+Click Neila Laghaneila Lagha 2erelation Link
+    [Documentation]  Click on Neila Laghaneila Lagha 2erelation De Deuxime Niveau Cnep Banquecnep Banque Link.
+    Click Link  ${linkedin.neila_laghaneila_lagha_2erelation}
+
+Click Newslettersnewsletters Button
+    [Documentation]  Click on Newslettersnewsletters Button.
+    Click Button  ${linkedin.newslettersnewsletters}
+
+Click Nouvelles Du Fil Dactualit Nouvelles Link
+    [Documentation]  Click on Nouvelles Du Fil Dactualit Nouvelles Notifications Accueil Link.
+    Click Link  ${linkedin.nouvelles_du_fil_dactualit_nouvelles}
+
+Click Offres Demploi Link
+    [Documentation]  Click on Offres Demploi Link.
+    Click Link  ${linkedin.offres_demploi}
+
+Click Ouafa Saighiouafa Saighi 2erelation Link
+    [Documentation]  Click on Ouafa Saighiouafa Saighi 2erelation De Deuxime Niveau Matre De Confrences Matre De Recherchematre De Confrences Matre De Recherche Link.
+    Click Link  ${linkedin.ouafa_saighiouafa_saighi_2erelation}
+
+Click Passer Au Contenu Principal Button
+    [Documentation]  Click on Passer Au Contenu Principal Button.
+    Click Button  ${linkedin.passer_au_contenu_principal}
+
+Click Photo Du Profil De Chama Link
+    [Documentation]  Click on Photo Du Profil De Chama .M Link.
+    Click Link  ${linkedin.photo_du_profil_de_chama}
+
+Click Photo Du Profil De Houria Link
+    [Documentation]  Click on Photo Du Profil De Houria Kerkarine Link.
+    Click Link  ${linkedin.photo_du_profil_de_houria}
+
+Click Photo Du Profil De Mohamed Link
+    [Documentation]  Click on Photo Du Profil De Mohamed Amine Douiri Link.
+    Click Link  ${linkedin.photo_du_profil_de_mohamed}
+
+Click Planification De Marchplanification De March Link
+    [Documentation]  Click on Planification De Marchplanification De March Link.
+    Click Link  ${linkedin.planification_de_marchplanification_de_march}
+
+Click Plus 1 Button
+    [Documentation]  Click on Plus Button.
+    Click Button  ${linkedin.plus_1}
+
+Click Plus 2 Button
+    [Documentation]  Click on Plus Button.
+    Click Button  ${linkedin.plus_2}
+
+Click Posts Button
+    [Documentation]  Click on Posts Button.
+    Click Button  ${linkedin.posts}
+
+Click Pour Les Entreprises Button
+    [Documentation]  Click on Pour Les Entreprises Button.
+    Click Button  ${linkedin.pour_les_entreprises}
+
+Click Raccourcis Clavier Button
+    [Documentation]  Click on Raccourcis Clavier Button.
+    Click Button  ${linkedin.raccourcis_clavier}
+
+Click Rdiger Un Message Button
+    [Documentation]  Click on Rdiger Un Message Button.
+    Click Button  ${linkedin.rdiger_un_message}
+
+Click Recherche Button
+    [Documentation]  Click on Recherche Button.
+    Click Button  ${linkedin.recherche}
+
+Click Redouane Zazoua Fellahredouane Zazoua Fellah Link
+    [Documentation]  Click on Redouane Zazoua Fellahredouane Zazoua Fellah 2erelation De Deuxime Niveau Directeur Commercialdirecteur Commercial Link.
+    Click Link  ${linkedin.redouane_zazoua_fellahredouane_zazoua_fellah}
+
+Click Rejoindre 1 Button
+    [Documentation]  Click on Rejoindre Button.
+    Click Button  ${linkedin.rejoindre_1}
+
+Click Rejoindre 2 Button
+    [Documentation]  Click on Rejoindre Button.
+    Click Button  ${linkedin.rejoindre_2}
+
+Click Richard Bransonrichard Branson Founder At Link
+    [Documentation]  Click on Richard Bransonrichard Branson Founder At Virgin Groupfounder At Virgin Group 18 739 235 Abonns18 739 235 Abonns Link.
+    Click Link  ${linkedin.richard_bransonrichard_branson_founder_at}
+
+Click Richard Bransonrichard Branson Link
+    [Documentation]  Click on Richard Bransonrichard Branson Link.
+    Click Link  ${linkedin.richard_bransonrichard_branson}
+
+Click Rseau Link
+    [Documentation]  Click on Rseau Link.
+    Click Link  ${linkedin.rseau}
+
+Click Sabonner 1 Button
+    [Documentation]  Click on Sabonner Button.
+    Click Button  ${linkedin.sabonner_1}
+
+Click Sabonner 2 Button
+    [Documentation]  Click on Sabonner Button.
+    Click Button  ${linkedin.sabonner_2}
+
+Click Sahouli Abdelkader Link
+    [Documentation]  Click on Sahouli Abdelkader Et 4 Relations En Commun Sahouli Abdelkader Et 4 Relations En Commun Link.
+    Click Link  ${linkedin.sahouli_abdelkader}
+
+Click Se Connecter 1 Button
+    [Documentation]  Click on Se Connecter Button.
+    Click Button  ${linkedin.se_connecter_1}
+
+Click Se Connecter 10 Button
+    [Documentation]  Click on Se Connecter Button.
+    Click Button  ${linkedin.se_connecter_10}
+
+Click Se Connecter 11 Button
+    [Documentation]  Click on Se Connecter Button.
+    Click Button  ${linkedin.se_connecter_11}
+
+Click Se Connecter 2 Button
+    [Documentation]  Click on Se Connecter Button.
+    Click Button  ${linkedin.se_connecter_2}
+
+Click Se Connecter 3 Button
+    [Documentation]  Click on Se Connecter Button.
+    Click Button  ${linkedin.se_connecter_3}
+
+Click Se Connecter 4 Button
+    [Documentation]  Click on Se Connecter Button.
+    Click Button  ${linkedin.se_connecter_4}
+
+Click Se Connecter 5 Button
+    [Documentation]  Click on Se Connecter Button.
+    Click Button  ${linkedin.se_connecter_5}
+
+Click Se Connecter 6 Button
+    [Documentation]  Click on Se Connecter Button.
+    Click Button  ${linkedin.se_connecter_6}
+
+Click Se Connecter 7 Button
+    [Documentation]  Click on Se Connecter Button.
+    Click Button  ${linkedin.se_connecter_7}
+
+Click Se Connecter 8 Button
+    [Documentation]  Click on Se Connecter Button.
+    Click Button  ${linkedin.se_connecter_8}
+
+Click Se Connecter 9 Button
+    [Documentation]  Click on Se Connecter Button.
+    Click Button  ${linkedin.se_connecter_9}
+
+Click Suivre 1 Button
+    [Documentation]  Click on Suivre Button.
+    Click Button  ${linkedin.suivre_1}
+
+Click Suivre 10 Button
+    [Documentation]  Click on Suivre Button.
+    Click Button  ${linkedin.suivre_10}
+
+Click Suivre 11 Button
+    [Documentation]  Click on Suivre Button.
+    Click Button  ${linkedin.suivre_11}
+
+Click Suivre 2 Button
+    [Documentation]  Click on Suivre Button.
+    Click Button  ${linkedin.suivre_2}
+
+Click Suivre 3 Button
+    [Documentation]  Click on Suivre Button.
+    Click Button  ${linkedin.suivre_3}
+
+Click Suivre 4 Button
+    [Documentation]  Click on Suivre Button.
+    Click Button  ${linkedin.suivre_4}
+
+Click Suivre 5 Button
+    [Documentation]  Click on Suivre Button.
+    Click Button  ${linkedin.suivre_5}
+
+Click Suivre 6 Button
+    [Documentation]  Click on Suivre Button.
+    Click Button  ${linkedin.suivre_6}
+
+Click Suivre 7 Button
+    [Documentation]  Click on Suivre Button.
+    Click Button  ${linkedin.suivre_7}
+
+Click Suivre 8 Button
+    [Documentation]  Click on Suivre Button.
+    Click Button  ${linkedin.suivre_8}
+
+Click Suivre 9 Button
+    [Documentation]  Click on Suivre Button.
+    Click Button  ${linkedin.suivre_9}
+
+Click Top Voicestop Voices Button
+    [Documentation]  Click on Top Voicestop Voices Button.
+    Click Button  ${linkedin.top_voicestop_voices}
+
+Click Tout Afficher 1 Link
+    [Documentation]  Click on Tout Afficher Link.
+    Click Link  ${linkedin.tout_afficher_1}
+
+Click Tout Afficher 2 Link
+    [Documentation]  Click on Tout Afficher Link.
+    Click Link  ${linkedin.tout_afficher_2}
+
+Click Universit Dalger Button
+    [Documentation]  Click on Universit Dalger Button.
+    Click Button  ${linkedin.universit_dalger}
+
+Click Universit Dalgeruniversit Dalger 52 600 Link
+    [Documentation]  Click on Universit Dalgeruniversit Dalger 52 600 Abonns52 600 Abonns Link.
+    Click Link  ${linkedin.universit_dalgeruniversit_dalger_52_600}
+
+Click Universit Dalgeruniversit Dalger Link
+    [Documentation]  Click on Universit Dalgeruniversit Dalger Link.
+    Click Link  ${linkedin.universit_dalgeruniversit_dalger}
+
+Click Vous Button
+    [Documentation]  Click on Vous Button.
+    Click Button  ${linkedin.vous}
+
+Click Vous Tes Dans La Fentre Button
+    [Documentation]  Click on Vous Tes Dans La Fentre De Messagerie. Appuyez Sur Entre Pour Ouvrir La Liste De Conversations. Button.
+    Click Button  ${linkedin.vous_tes_dans_la_fentre}
+
+Fill
+    [Documentation]  Fill every fields in the page.
+    linkedin.Set Fermer Le Menu De Navigation 2 Text Field
+
+Fill And Submit
+    [Documentation]  Fill every fields in the page and submit it to target page.
+    linkedin.Fill
+    linkedin.Submit
+
+Set Fermer Le Menu De Navigation 1 Text Field
+    [Arguments]  ${fermer_le_menu_de_navigation_1_value}=${DATA['FERMER_LE_MENU_DE_NAVIGATION_1']}
+    [Documentation]  Set value to Fermer Le Menu De Navigation Text field.
+    Click Button  ${linkedin.fermer_le_menu_de_navigation_1}
+
+Set Fermer Le Menu De Navigation 2 Text Field
+    [Arguments]  ${fermer_le_menu_de_navigation_2_value}=${DATA['FERMER_LE_MENU_DE_NAVIGATION_2']}
+    [Documentation]  Set value to Fermer Le Menu De Navigation Text field.
+    Input Text  ${linkedin.fermer_le_menu_de_navigation_2}  ${fermer_le_menu_de_navigation_2_value}
+
+Submit
+    [Documentation]  Submit the form to target page.
+    linkedin.Click Accder La Recherche Button
+
+Verify Page Loaded
+    [Documentation]  Verify that the page loaded completely.
+    Wait Until Page Contains  ${linkedin.page_loaded_text}
+
+Verify Page Url
+    [Documentation]  Verify that current page URL matches the expected URL.
+    Location Should Contain  ${linkedin.page_url}

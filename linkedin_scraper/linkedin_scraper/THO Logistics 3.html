@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Révolution Logistique : L'Avantage Concurrentiel par les Données</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #ffffff;
+            height: 100%;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 40px;
+            font-size: 3em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .slide {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        .slide.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        h2 {
+            color: #ffd700;
+            margin-top: 0;
+            border-bottom: 2px solid #ffd700;
+            padding-bottom: 10px;
+            font-size: 2.2em;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-size: 1.1em;
+        }
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.1em;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 300px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .kpi-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .kpi-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        .kpi-value {
+            font-size: 3em;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+        .case-study {
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 5px solid #ffd700;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 0 15px 15px 0;
+        }
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #ffd700;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: #ffd700;
+            border: 4px solid #ff6b6b;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left {
+            left: 0;
+        }
+        .right {
+            left: 50%;
+        }
+        .right::after {
+            left: -16px;
+        }
+        .timeline-content {
+            padding: 20px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            position: relative;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .signature {
+            text-align: center;
+            margin-top: 50px;
+            font-style: italic;
+            font-size: 1.2em;
+            color: #ffd700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Révolution Logistique : L'Avantage Concurrentiel par les Données</h1>
+        
+        <!-- Your existing slides content here -->
+        <div class="slide">
+            <h2>Impact Financier Direct</h2>
+            <p>Notre solution d'analyse de données transforme vos opérations en résultats financiers concrets :</p>
+            <div class="kpi-grid">
+                <div class="kpi-item">
+                    <div class="kpi-value">20%</div>
+                    <p>Réduction des coûts opérationnels</p>
+                </div>
+                <div class="kpi-item">
+                    <div class="kpi-value">15%</div>
+                    <p>Augmentation du chiffre d'affaires</p>
+                </div>
+                <div class="kpi-item">
+                    <div class="kpi-value">30%</div>
+                    <p>Amélioration de la marge bénéficiaire</p>
+                </div>
+                <div class="kpi-item">
+                    <div class="kpi-value">25%</div>
+                    <p>Réduction des stocks excédentaires</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>Optimisation de la Chaîne d'Approvisionnement</h2>
+            <p>Notre approche data-driven révolutionne votre chaîne logistique :</p>
+            <ul>
+                <li><strong>Prévision de la demande :</strong> Réduction de 40% des erreurs de prévision, minimisant les ruptures de stock et les surstocks.</li>
+                <li><strong>Optimisation des itinéraires :</strong> Diminution de 25% des coûts de transport et réduction de 30% des délais de livraison.</li>
+                <li><strong>Gestion des entrepôts :</strong> Augmentation de 35% de l'efficacité opérationnelle des entrepôts.</li>
+                <li><strong>Maintenance prédictive :</strong> Réduction de 50% des temps d'arrêt imprévus des équipements.</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h2>Avantage Concurrentiel Mesurable</h2>
+            <p>Notre solution vous positionne en leader du marché :</p>
+            <ul>
+                <li><strong>Satisfaction client :</strong> Augmentation de 40% du Net Promoter Score (NPS).</li>
+                <li><strong>Parts de marché :</strong> Gain de 5 points de parts de marché en 12 mois.</li>
+                <li><strong>Innovation :</strong> Lancement 30% plus rapide de nouveaux services logistiques.</li>
+                <li><strong>Durabilité :</strong> Réduction de 20% de l'empreinte carbone, améliorant l'image de marque.</li>
+            </ul>
+            <div class="chart-container">
+                <canvas id="competitiveAdvantageChart"></canvas>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>Étude de Cas : Transformation d'un Leader Logistique</h2>
+            <div class="case-study">
+                <p><strong>Client :</strong> Enterprise Logistique Internationale (ELI)</p>
+                <p><strong>Défi :</strong> Perte de parts de marché due à des inefficacités opérationnelles et des coûts élevés.</p>
+                <p><strong>Solution :</strong> Implémentation de notre plateforme d'analyse de données avancée.</p>
+                <p><strong>Résultats :</strong></p>
+                <ul>
+                    <li>Réduction de 22% des coûts opérationnels en 6 mois</li>
+                    <li>Amélioration de 35% de la précision des livraisons</li>
+                    <li>Augmentation de 18% du chiffre d'affaires en un an</li>
+                    <li>Retour sur investissement (ROI) de 300% en 18 mois</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>Plan de Mise en Œuvre</h2>
+            <p>Une approche structurée pour une transformation rapide et efficace :</p>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Phase 1 : Analyse et Planification</h3>
+                        <p>Audit complet des données et des processus (2 semaines)</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Phase 2 : Implémentation Initiale</h3>
+                        <p>Déploiement des outils d'analyse et formation (1 mois)</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h3>Phase 3 : Optimisation</h3>
+                        <p>Ajustements basés sur les premiers résultats (2 mois)</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h3>Phase 4 : Expansion</h3>
+                        <p>Déploiement à l'échelle de l'entreprise (3 mois)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2>Investissement et Retour</h2>
+            <p>Un investissement stratégique pour une croissance exponentielle :</p>
+            <ul>
+                <li><strong>Investissement initial :</strong> Personnalisé selon la taille de votre entreprise</li>
+                <li><strong>ROI projeté :</strong> 250% à 400% sur 24 mois</li>
+                <li><strong>Économies annuelles :</strong> Estimation de 2 à 5 millions d'euros pour une entreprise de taille moyenne</li>
+                <li><strong>Augmentation de la valeur de l'entreprise :</strong> Potentiel d'augmentation de 30% de la valorisation de l'entreprise</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h2>Prêt à Dominer votre Marché ?</h2>
+            <p>Découvrez comment notre solution d'analyse de données peut transformer votre entreprise en leader incontesté du secteur logistique.</p>
+            <a href="#" class="btn">Planifiez une Consultation Stratégique</a>
+        </div>
+    </div>
+        <div class="slide">
+            <h2>Prêt à Dominer votre Marché ?</h2>
+            <p>Découvrez comment notre solution d'analyse de données peut transformer votre entreprise en leader incontesté du secteur logistique.</p>
+            <a href="#" class="btn">Planifiez une Consultation Stratégique</a>
+        </div>
+
+        <div class="signature">
+            Réalisé par ZAKARIA Houdache
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            function showSlides() {
+                slides.forEach((slide, index) => {
+                    setTimeout(() => {
+                        slide.classList.add('active');
+                    }, index * 300);
+                });
+            }
+            showSlides();
+
+            // Your existing chart script here
+        });
+    </script>
+</body>
+</html>

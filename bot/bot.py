@@ -55,7 +55,9 @@ SENT_EMAILS_FILE = 'my_telegram_bot/sent_emails.json'
 # Liste des utilisateurs autorisés (administrateurs)
 admin_user_ids = [1719899525, 987654321]  # Replace with actual user IDs
 
-
+# async def webhook(update: Update, context: ContextTypes.DEFAULT_TYPE):
+#     # This function will handle incoming updates via webhook
+#     await application.process_update(update)
 
 def read_docx(file_path):
     """
@@ -1247,9 +1249,14 @@ def main():
 
 
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+    return application
 
     # Démarrage de l'application
-    app.run_polling()
+    # app.run_polling()
+
+# Webhook handler
+async def webhook(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await main().process_update(update)
 
 if __name__ == '__main__':
     file_path = "my_telegram_bot/CV Projects Sales Manager, Mr BAHI Takieddine.pdf"  # Replace with your file path

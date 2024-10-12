@@ -1,8 +1,6 @@
 python-telegram-bot==20.5  # For Telegram bot functionality
 python-docx==0.8.11        # For reading and writing DOCX files
 PyMuPDF==1.23.3            # For PDF reading (fitz)
-selenium==4.11.2           # For web automation
-webdriver-manager==4.0.0   # To manage ChromeDriver for Selenium
 requests==2.31.0           # For making HTTP requests (optional, if needed)
 
 # Email-related packages (part of the standard library, no need to specify):

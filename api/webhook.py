@@ -4,7 +4,7 @@ import json
 import logging
 from telegram import Update
 from telegram.ext import Application
-from bot.bot import initialize_bot  # Assume this function creates and returns your bot's Application
+# from bot.bot import initialize_bot  # Assume this function creates and returns your bot's Application
 
 # Set up logging
 logging.basicConfig(level=logging.DEBUG)

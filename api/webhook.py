@@ -19,21 +19,17 @@ class WebhookHandler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         try:
-            # Read the request body
             content_length = int(self.headers['Content-Length'])
             post_data = self.rfile.read(content_length).decode('utf-8')
             update = Update.de_json(json.loads(post_data), application.bot)
-
-            # Handle the update asynchronously
+            
+            # Process the update asynchronously
             asyncio.run(self.handle_update(update))
-
-            # Send a successful response
-            self.send_response(200)
-            self.end_headers()
         except Exception as e:
-            # Log any error that occurs
             logging.error(f"Error processing update: {e}")
-            self.send_response(500)
+        finally:
+            # Always respond with 200 OK
+            self.send_response(200)
             self.end_headers()
 
     def do_GET(self):

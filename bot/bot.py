@@ -1,9 +1,7 @@
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
 import re
-from sklearn.feature_extraction.text import TfidfVectorizer
-import nltk
-from nltk.tokenize import word_tokenize
+
 from docx import Document
 import fitz  # PyMuPDF for PDF reading
 import json 
@@ -17,13 +15,6 @@ import json
 import re
 import logging
 import asyncio
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.keys import Keys
 
 
 from datetime import datetime, timedelta
@@ -33,7 +24,7 @@ import os
 
 
 
-nltk.download('punkt')
+# nltk.download('punkt')
 # Configuration des e-mails et du bot Telegram
 EMAIL_ADDRESS = 'cvupdz@gmail.com'
 EMAIL_PASSWORD = 'avpu agry kuwj zlzs'

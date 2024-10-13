@@ -1,6 +1,7 @@
 import json
 import logging
 from telegram import Update
+from telegram.ext import Application
 from bot.bot import main  # Make sure this import is correct
 
 # Set up logging
@@ -27,15 +28,16 @@ async def handler(request):
         
         return {
             'statusCode': 200,
-            'body': 'OK'
+            'body': json.dumps('OK')
         }
     except Exception as e:
         logger.error(f"Error processing update: {e}")
         return {
             'statusCode': 500,
-            'body': f'Internal Server Error: {str(e)}'
+            'body': json.dumps(f'Internal Server Error: {str(e)}')
         }
 
 def entrypoint(request):
     """Entry point for Vercel."""
-    return handler(request)
+    import asyncio
+    return asyncio.run(handler(request))

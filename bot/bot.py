@@ -622,8 +622,8 @@ def main() -> Application:
     # app.run_polling()
 
 # Webhook handler
-async def webhook(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await main().process_update(update)
+# async def webhook(update: Update, context: ContextTypes.DEFAULT_TYPE):
+#     await main().process_update(update)
 
 # if __name__ == '__main__':
 #     file_path = "my_telegram_bot/CV Projects Sales Manager, Mr BAHI Takieddine.pdf"  # Replace with your file path

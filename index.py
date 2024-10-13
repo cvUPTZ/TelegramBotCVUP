@@ -37,10 +37,12 @@ class WebhookHandler(BaseHTTPRequestHandler):
             self.end_headers()
 
     def do_GET(self):
-        # Respond with method not allowed for GET requests
-        logging.warning("Received unsupported GET request.")
-        self.send_response(405)  # Method Not Allowed
+        # Handle GET requests gracefully
+        logging.info("Received a GET request.")
+        self.send_response(200)
+        self.send_header("Content-type", "text/html")
         self.end_headers()
+        self.wfile.write(b"Webhook server is running, but this endpoint only accepts POST requests.")
 
 # Expose the WebhookHandler as the handler for Vercel
 handler = WebhookHandler

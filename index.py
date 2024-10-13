@@ -1,4 +1,3 @@
-# index.py
 from http.server import BaseHTTPRequestHandler
 import json
 import logging
@@ -44,5 +43,7 @@ class WebhookHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(b"Webhook server is running, but this endpoint only accepts POST requests.")
 
-# Expose the WebhookHandler as the handler for Vercel
-handler = WebhookHandler
+# Create an instance of the handler for Vercel
+def handler(event, context):
+    request = WebhookHandler()
+    request.handle_request(event, context)

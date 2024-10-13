@@ -1,15 +1,4 @@
-python-telegram-bot==20.5  # For Telegram bot functionality
-python-docx==0.8.11        # For reading and writing DOCX files
-PyMuPDF==1.23.3            # For PDF reading (fitz)
-requests==2.31.0           # For making HTTP requests (optional, if needed)
-
-# Email-related packages (part of the standard library, no need to specify):
-# smtplib, email.mime
-
-# Logging-related packages (part of the standard library, no need to specify):
-# logging
-
-# Asyncio-related packages (part of the standard library, no need to specify):
-# asyncio
-
-# datetime and os are part of the standard library, no need to specify
+python-telegram-bot==20.5
+python-docx==0.8.11
+requests==2.31.0
+PyMuPDF==1.24.11

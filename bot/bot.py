@@ -22,7 +22,7 @@ import os
 
 
 
-
+#hlhmlghml
 
 # nltk.download('punkt')
 # Configuration des e-mails et du bot Telegram

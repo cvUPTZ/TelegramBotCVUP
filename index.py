@@ -1,5 +1,5 @@
 # index.py
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler
 import json
 import logging
 import asyncio
@@ -8,6 +8,9 @@ from bot.bot import main  # Importing the main function from bot
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
+
+# Initialize the bot application
+application = main()  # This creates the application instance
 
 class WebhookHandler(BaseHTTPRequestHandler):
     async def handle_update(self, update: Update):
@@ -34,18 +37,12 @@ class WebhookHandler(BaseHTTPRequestHandler):
             self.end_headers()
 
     def do_GET(self):
-        # Respond with method not allowed for GET requests
-        logging.warning("Received unsupported GET request.")
-        self.send_response(405)  # Method Not Allowed
+        # Handle GET requests gracefully
+        logging.info("Received a GET request.")
+        self.send_response(200)
+        self.send_header("Content-type", "text/html")
         self.end_headers()
+        self.wfile.write(b"Webhook server is running, but this endpoint only accepts POST requests.")
 
-# Initialize the application globally
-application = main()  # This creates the application instance
-
-# Main entry point
-if __name__ == "__main__":
-    # Start the HTTP server
-    server_address = ('', 8000)  # Change to your desired port
-    httpd = HTTPServer(server_address, WebhookHandler)
-    logging.info('Starting webhook server...')
-    httpd.serve_forever()
+# Expose the WebhookHandler as the handler for Vercel
+handler = WebhookHandler

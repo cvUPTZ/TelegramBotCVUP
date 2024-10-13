@@ -1,49 +1,46 @@
-# api/webhook.py
-
+from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 import logging
+import asyncio
 from telegram import Update
-from telegram.ext import Application
-# from bot.bot import initialize_bot  # Assume this function creates and returns your bot's Application
+from bot.bot import main  # Ensure the main function is properly imported
 
 # Set up logging
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
 
-# Initialize the application
-app = initialize_bot()
+class WebhookHandler(BaseHTTPRequestHandler):
+    async def handle_update(self, update: Update):
+        # Here we assume `application` is globally defined
+        await application.process_update(update)
 
-async def handle_update(update: Update):
-    """Process the Telegram update."""
-    await app.process_update(update)
+    def do_POST(self):
+        try:
+            content_length = int(self.headers['Content-Length'])
+            post_data = self.rfile.read(content_length).decode('utf-8')
+            update = Update.de_json(json.loads(post_data), application.bot)
 
-async def handler(request):
-    """Vercel serverless function handler."""
-    try:
-        logger.debug("Handler function called")
-        
-        # Parse the incoming request body
-        body = json.loads(request.body)
-        logger.debug(f"Received body: {body}")
-        
-        # Create an Update object
-        update = Update.de_json(body, app.bot)
-        
-        # Process the update
-        await handle_update(update)
-        
-        return {
-            'statusCode': 200,
-            'body': json.dumps('OK')
-        }
-    except Exception as e:
-        logger.error(f"Error processing update: {e}", exc_info=True)
-        return {
-            'statusCode': 500,
-            'body': json.dumps(f'Internal Server Error: {str(e)}')
-        }
+            # Run the async handler
+            asyncio.run(self.handle_update(update))
 
-def main(request):
-    """Main function for Vercel."""
-    import asyncio
-    return asyncio.run(handler(request))
+            self.send_response(200)
+            self.end_headers()
+        except Exception as e:
+            logging.error(f"Error processing update: {e}")
+            self.send_response(500)
+            self.end_headers()
+
+    def do_GET(self):
+        logging.warning("Received unsupported GET request.")
+        self.send_response(405)  # Method Not Allowed
+        self.end_headers()
+
+# Initialize the application globally
+application = main()  # This creates the application instance
+
+# Main entry point
+if __name__ == "__main__":
+    # Start the HTTP server
+    server_address = ('', 8000)  # Change to your desired port
+    httpd = HTTPServer(server_address, WebhookHandler)
+    logging.info('Starting webhook server...')
+    httpd.serve_forever()

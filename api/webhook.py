@@ -38,4 +38,8 @@ async def handler(request):
 
 def entrypoint(request):
     """Entry point for Vercel."""
+<<<<<<< HEAD
     return handler(request)
+=======
+    return handler(request)
+>>>>>>> c07989b2c9f5f5002a8d1f6bd9531a391ef4fe4c

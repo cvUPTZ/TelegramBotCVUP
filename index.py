@@ -3,13 +3,13 @@ import json
 import logging
 import asyncio
 from telegram import Update
-from bot.bot import main  # Importing the main function from bot
+from bot.bot import main  # Make sure this import is correct and 'main' returns an Application instance.
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 
 # Initialize the bot application
-application = main()  # This creates the application instance
+application = main()  # Ensure this returns an Application instance.
 
 class WebhookHandler(BaseHTTPRequestHandler):
     async def handle_update(self, update: Update):
@@ -43,7 +43,5 @@ class WebhookHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(b"Webhook server is running, but this endpoint only accepts POST requests.")
 
-# Create an instance of the handler for Vercel
-def handler(event, context):
-    request = WebhookHandler()
-    request.handle_request(event, context)
+# Expose the WebhookHandler as the handler for Vercel
+handler = WebhookHandler

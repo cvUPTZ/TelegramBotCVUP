@@ -30,7 +30,7 @@ EMAIL_ADDRESS = 'cvupdz@gmail.com'
 EMAIL_PASSWORD = 'avpu agry kuwj zlzs'
 SMTP_SERVER = 'smtp.gmail.com'
 SMTP_PORT = 587
-TELEGRAM_BOT_TOKEN = '7495077361:AAFk3o2pp5qhw_wCowOdsjcvdXq7CF2kZv4'
+TELEGRAM_BOT_TOKEN = '7495077361:AAGFA9GN6MCoUjNmiWDEUwa7IvN8C7E1dR0'
                     
 # Chemins des fichiers CV
 CV_FILES = {
